@@ -76,14 +76,11 @@ def compare_work(work_fn1, work_fn2, work_fn3, sizes=[10, 20, 50, 100, 1000, 500
 	for n in sizes:
 		# compute W(n) using current a, b, f
 		
-		work1 = work_calc(n,1,2,work_fn1)
-		work2 = work_calc(n,4,2,work_fn2)
-		work3 = work_calc(n,8,2,work_fn3)
 		result.append((
 			n,
-			work1,
-			work2,
-			work3
+			work_fn1(n),
+			work_fn2(n),
+			work_fn3(n)
 			))
 	return result
 
@@ -108,15 +105,13 @@ def compare_span(span_fn1, span_fn2,span_fn3, sizes=[10, 20, 50, 100, 1000, 5000
 	"""
 	result = []
 	for n in sizes:
-		span1 = span_calc(n,1,2,span_fn1)
-		span2 = span_calc(n,1,2,span_fn2)
-		span3 = span_calc(n,1,2,span_fn3)
+		
 		# compute W(n) using current a, b, f
 		result.append((
 			n,
-			span1,
-			span2,
-			span3
+			span_fn1(n),
+			span_fn2(n),
+			span_fn3(n)
 			))
 	return result
 	
