@@ -23,18 +23,18 @@ def test_compare_work():
 
 	# create work_fn1
 	# create work_fn2
-	work_fn1= lambda n: 1
-	work_fn2 = lambda n :math.log(n,2)
-	work_fn3 = lambda n: n
+	work_fn1= lambda n: work_calc(n,a=2,b=2,f=lambda x:1)
+	work_fn2 = lambda n: work_calc(n,a=2,b=2,f=lambda x: math.log(x,2))
+	work_fn3 = lambda n: work_calc(n,a=2,b=2,f=lambda x:x)
 	res = compare_work(work_fn1, work_fn2,work_fn3,sizes=[10, 20, 50, 100, 1000, 5000, 10000])
 
 	print(res)
 
 	
 def test_compare_span():
-	span_fn1= lambda n: 1
-	span_fn2 = lambda n : math.log(n,2)
-	span_fn3 = lambda n : n 
+	span_fn1= lambda n: span_calc(n, a=1, b=2, f=lambda x:1)
+	span_fn2= lambda n: span_calc(n,a=1,b=2,f=lambda x: math.log(x,2))
+	span_fn3 = lambda n: span_calc(n,a=1,b=2,f=lambda x:x)
 
 	res = compare_work(span_fn1,span_fn2,span_fn3,sizes=[10, 20, 50, 100, 1000, 5000, 10000])
 	print(res)	
